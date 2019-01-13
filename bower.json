@@ -1,0 +1,22 @@
+{
+  "name": "portfolio",
+  "description": "Small description for portfolio goes here",
+  "main": "",
+  "authors": [
+    "preslavb <preslavb@abv.bg>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^4.2.1",
+    "popper.js": "^1.14.6"
+  }
+}
