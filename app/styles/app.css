@@ -1,0 +1,42 @@
+/* Global Variables */
+:root {
+  --backgroundColor: #FF530D;
+}
+
+/* Navigation Options */
+.navbar {
+  height: 3.5rem;
+  line-height: 3.5rem;
+}
+
+.navbar a {
+  color: white !important;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.navbar, .nav-link {
+  padding: 0rem;
+}
+
+.navbar-brand, .nav-item {
+  padding: 0rem 0.5rem;
+  display: block;
+  height: 100%;
+}
+
+.navbar-brand, .nav-item, .dropdown-item {
+  color: white;
+}
+
+.navbar-brand:hover, .nav-item:hover, .dropdown-item:hover {
+  color: white;
+  background-color: var(--backgroundColor) !important;
+}
+
+.dropdown-menu {
+  border-radius: 0rem;
+  margin: 0rem;
+  padding: 0rem;
+  border: 0px solid white;
+}

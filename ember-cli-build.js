@@ -7,10 +7,16 @@ module.exports = function(defaults) {
     // Add options here
   });
 
+  // JQuery
+  // app.import(app.bowerDirectory + '/jquery/dist/jquery.js');
+
+  // Popper.js
+  app.import(app.bowerDirectory + '/popper.js/dist/umd/popper.min.js');
+
   // Bootstrap
   app.import(app.bowerDirectory + '/bootstrap/dist/js/bootstrap.js');
   app.import(app.bowerDirectory + '/bootstrap/dist/css/bootstrap.css');
-  
+
   // Use `app.import` to add additional libraries to the generated
   // output files.
   //

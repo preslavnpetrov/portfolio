@@ -1,23 +1,28 @@
-<ul class="nav">
+<!-- Image and text -->
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+
+    <!-- TODO: Hookup the appropriate name here -->
+    Preslav Petrov - Games {{globals.disciplineFormatted}} Portfolio
+  </a>
+
+  <!-- About me page -->
   <li class="nav-item">
-    <a class="nav-link active" href="#">Active</a>
+    {{#link-to 'about-me'}}
+      About me
+    {{/link-to}}
   </li>
 
+  <!-- Dropdown for the discipline to look at -->
   <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{current-discipline-selected}} Test</a>
-    <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Development/Programming</a>
-      <a class="dropdown-item" href="#">Games Design</a>
-      <a class="dropdown-item" href="#">Level Design</a>
-      <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">Others</a>
+    <a class="nav-link dropdown-toggle" href="#" id="discipline" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Discipline: {{globals.disciplineFormatted}}
+    </a>
+    <div class="dropdown-menu bg-dark" aria-labelledby="discipline">
+      {{#each-in globals.disciplines as |index disciplineChoice|}}
+        <a class="dropdown-item" {{action (mut userInput.discipline) index}}>{{disciplineChoice}}</a>
+      {{/each-in}}
     </div>
   </li>
-
-  <li class="nav-item">
-    <a class="nav-link" href="#">Link</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link disabled" href="#">Disabled</a>
-  </li>
-</ul>
+</nav>
