@@ -1,0 +1,39 @@
+<div class="row project-viewer">
+  <div class="project-handle previous-project {{unless previousProjectAvailable 'd-none'}}">
+    <i class="fa fa-2x fa-angle-left"></i>
+  </div>
+
+  <div class="project-viewer-core">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-5 project-viewer-media" style="background-image: url({{currentPhotoURL}})">
+          <div class="owl-carousel owl-theme owl-loaded">
+            <div class="owl-stage-outer">
+                <div class="owl-stage">
+                  {{#each currentProject.images as |image|}}
+                    <div class="owl-item" onclick={{action "selectImage" image}}><img src="{{image}}" alt=""></div>
+                  {{/each}}
+                  <!-- <div class="owl-item"><img src="https://ggj.s3.amazonaws.com/styles/feature_image__wide/games/screenshots/hearthlight01.png?itok=CBu5Y162&timestamp=1548611006" alt=""></div>
+                  <div class="owl-item"><img src="https://ggj.s3.amazonaws.com/styles/feature_image__wide/games/screenshots/hearthlight02.png?itok=OMw9_0zi&timestamp=1548611006" alt=""></div>
+                  <div class="owl-item"><img src="https://ggj.s3.amazonaws.com/styles/feature_image__wide/games/screenshots/hearthlight03.png?itok=wvIBJ_aq&timestamp=1548611006" alt=""></div>
+                  <div class="owl-item"><img src="https://ggj.s3.amazonaws.com/styles/feature_image__wide/games/screenshots/unity_pnelug0kx7.png?itok=bSat5sRx&timestamp=1548611006" alt=""></div> -->
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-7 project-viewer-content">
+          <div class="p-4 h-100">
+            {{#if currentProject}}
+              {{component (concat "project-descriptions/" currentProject.componentName)}}
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="project-handle next-project {{unless nextProjectAvailable 'd-none'}}">
+    <i class="fa fa-2x fa-angle-right"></i>
+  </div>
+</div>

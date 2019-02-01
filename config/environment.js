@@ -17,6 +17,18 @@ module.exports = function(environment) {
       }
     },
 
+    fontawesome: {
+      defaultPrefix: 'fas', // light icons
+      icons: {
+        'pro-light-svg-icons': 'all',
+        'free-solid-svg-icons': [
+          'adjust',
+          'ambulance',
+          'pencil-alt'
+        ]
+      }
+    },
+
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created

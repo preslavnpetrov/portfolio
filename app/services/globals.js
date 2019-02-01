@@ -17,7 +17,8 @@ export default Service.extend({
       'Games Development'
     ];
 
-    this.disiplineColors = [
+    // The color map of the disciplines
+    this.disciplineColors = [
       'FF530D',
       'E80C7A',
       '7400FF'
@@ -30,7 +31,7 @@ export default Service.extend({
 
   // Change the color of the background when the discipline changes
   onDisciplineChange: observer('userInput.discipline', function() {
-    $('body').get(0).style.setProperty("--backgroundColor", `#${this.disiplineColors[this.userInput.discipline]}`);
+    $('body').get(0).style.setProperty("--backgroundColor", `#${this.disciplineColors[this.userInput.discipline]}`);
   }),
 
   // Stringified discipline

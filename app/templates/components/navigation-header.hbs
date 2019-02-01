@@ -1,28 +1,37 @@
 <!-- Image and text -->
-<nav class="navbar navbar-dark bg-dark">
+<nav class="navbar navbar-dark bg-dark row">
   <a class="navbar-brand" href="#">
     <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
 
     <!-- TODO: Hookup the appropriate name here -->
-    Preslav Petrov - Games {{globals.disciplineFormatted}} Portfolio
+    Preslav Petrov - {{globals.disciplineFormatted}} Portfolio
   </a>
 
-  <!-- About me page -->
-  <li class="nav-item">
-    {{#link-to 'about-me'}}
-      About me
-    {{/link-to}}
-  </li>
+  <!-- Actual Navigation -->
+  <div class="align-self-right mr-4">
+    <div class="row justify-content-end">
+      <!-- About me page -->
+      <li class="nav-item">
+        {{#link-to 'about-me' class='nav-link'}}
+          About me
+        {{/link-to}}
+      </li>
 
-  <!-- Dropdown for the discipline to look at -->
-  <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="discipline" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Discipline: {{globals.disciplineFormatted}}
-    </a>
-    <div class="dropdown-menu bg-dark" aria-labelledby="discipline">
-      {{#each-in globals.disciplines as |index disciplineChoice|}}
-        <a class="dropdown-item" {{action (mut userInput.discipline) index}}>{{disciplineChoice}}</a>
-      {{/each-in}}
+      <!-- Dropdown for the discipline to look at -->
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="discipline" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Discipline: {{globals.disciplineFormatted}}
+        </a>
+        <div class="dropdown-menu bg-dark" aria-labelledby="discipline">
+          {{#each-in globals.disciplines as |index disciplineChoice|}}
+            <a class="dropdown-item" {{action (mut userInput.discipline) index}}> <span style="background-color: #{{get globals.disciplineColors index}}" class="circle"></span> {{disciplineChoice}}</a>
+          {{/each-in}}
+        </div>
+      </li>
     </div>
-  </li>
+  </div>
+
+  <div class="anchor">
+    <i class="fa fa-2x {{if navbarExpanded "fa-angle-up" "fa-angle-down"}}"></i>
+  </div>
 </nav>

@@ -1,12 +1,53 @@
 /* Global Variables */
 :root {
   --backgroundColor: #FF530D;
+  --backgroundLight: #f6f6f6;
+  --dark: #111111;
+}
+
+body {
+  background-color: var(--backgroundLight);
+  overflow-x: hidden;
+  font-family: 'Open Sans', sans-serif !important;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Source Sans Pro', sans-serif !important;
 }
 
 /* Navigation Options */
 .navbar {
   height: 3.5rem;
   line-height: 3.5rem;
+  margin-bottom: 3rem;
+  background-color: var(--dark) !important;
+  border-bottom: 1px solid var(--backgroundColor);
+}
+
+.ease-top {
+  -webkit-transition: top 0.3s; /* Safari */
+  transition: top 0.3s;
+}
+
+.navbar .anchor {
+  content: "\f107";
+  position: absolute;
+  display: block;
+  color: white;
+  background-color: var(--dark);
+  width: 40px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  cursor: pointer;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  bottom: -30px;
+  right: 40px;
+}
+
+.navbar .anchor:hover {
+  background-color: var(--backgroundColor) !important;
 }
 
 .navbar a {
@@ -16,7 +57,16 @@
 }
 
 .navbar, .nav-link {
-  padding: 0rem;
+  padding: 0rem 0.5rem;
+}
+
+.nav-link::before {
+  content: "";
+  position: absolute;
+  left: 0px;
+  top: 10%;
+  border-left: 1px solid white;
+  height: 80%;
 }
 
 .navbar-brand, .nav-item {
@@ -32,6 +82,7 @@
 .navbar-brand:hover, .nav-item:hover, .dropdown-item:hover {
   color: white;
   background-color: var(--backgroundColor) !important;
+  text-decoration: none;
 }
 
 .dropdown-menu {
@@ -39,4 +90,85 @@
   margin: 0rem;
   padding: 0rem;
   border: 0px solid white;
+}
+
+.circle {
+  content: '';
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+/* Project Viewer */
+.project-viewer {
+  height: 45rem;
+}
+
+.project-viewer-core {
+  width: 100%;
+  height: 45rem;
+  margin-left: 12rem;
+  margin-right: 12rem;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.project-handle {
+  margin: 0;
+  padding: 0;
+  width: 12rem;
+  height: 45rem;
+  overflow:hidden;
+  color: var(--backgroundColor);
+  background-color: var(--backgroundLight);
+
+  transition: background-color 0.1s ease;
+}
+
+.project-handle:hover {
+  background-color: var(--backgroundColor) !important;
+  color: white;
+}
+
+.previous-project {
+  position: absolute;
+  left: 0px;
+}
+
+.next-project {
+  position: absolute;
+  right: 0px;
+}
+
+.project-handle i {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  line-height: 45rem;
+
+  transition: line-height 0.1s ease;
+}
+
+.project-handle:hover i {
+  line-height: 44rem;
+}
+
+/* Project Details */
+.project-viewer-media {
+  background-color: var(--dark);
+  height: 45rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+.project-viewer-media .owl-carousel {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+}
+
+.owl-theme .owl-dots .owl-dot.active span {
+  background-color: var(--backgroundColor);
 }
