@@ -5,5 +5,6 @@ export default DS.Model.extend({
   componentName: DS.attr('string'),
   description: DS.attr('string'),
   images: DS.attr(),
-  discipline: DS.attr('number', {default: 0})
+  discipline: DS.attr('number', {default: 0}),
+  tags: DS.attr()
 });

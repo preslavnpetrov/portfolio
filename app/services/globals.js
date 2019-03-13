@@ -18,6 +18,13 @@ export default Service.extend({
     ];
 
     // The color map of the disciplines
+    this.disciplineColorsLight = [
+      'f5a07e',
+      'e976b0',
+      'b681f6'
+    ];
+
+    // The color map of the disciplines
     this.disciplineColors = [
       'FF530D',
       'E80C7A',
@@ -32,6 +39,7 @@ export default Service.extend({
   // Change the color of the background when the discipline changes
   onDisciplineChange: observer('userInput.discipline', function() {
     $('body').get(0).style.setProperty("--backgroundColor", `#${this.disciplineColors[this.userInput.discipline]}`);
+    $('body').get(0).style.setProperty("--backgroundColorLight", `#${this.disciplineColorsLight[this.userInput.discipline]}`);
   }),
 
   // Stringified discipline

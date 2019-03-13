@@ -1,31 +1,40 @@
 <div class="row project-viewer">
-  <div class="project-handle previous-project {{unless previousProjectAvailable 'd-none'}}">
+  <div class="project-handle previous-project {{unless previousProjectAvailable 'd-none'}}" onclick={{action "goToPrevious"}}>
     <i class="fa fa-2x fa-angle-left"></i>
+    <span>Previous</span>
   </div>
 
   <div class="project-viewer-core">
     <div class="container-fluid">
       <div class="row">
-        <div class="col-5 project-viewer-media" style="background-image: url({{currentPhotoURL}})">
-          <div class="owl-carousel owl-theme owl-loaded">
-            <div class="owl-stage-outer">
-                <div class="owl-stage">
-                  {{#each currentProject.images as |image|}}
-                    <div class="owl-item" onclick={{action "selectImage" image}}><img src="{{image}}" alt=""></div>
-                  {{/each}}
-                  <!-- <div class="owl-item"><img src="https://ggj.s3.amazonaws.com/styles/feature_image__wide/games/screenshots/hearthlight01.png?itok=CBu5Y162&timestamp=1548611006" alt=""></div>
-                  <div class="owl-item"><img src="https://ggj.s3.amazonaws.com/styles/feature_image__wide/games/screenshots/hearthlight02.png?itok=OMw9_0zi&timestamp=1548611006" alt=""></div>
-                  <div class="owl-item"><img src="https://ggj.s3.amazonaws.com/styles/feature_image__wide/games/screenshots/hearthlight03.png?itok=wvIBJ_aq&timestamp=1548611006" alt=""></div>
-                  <div class="owl-item"><img src="https://ggj.s3.amazonaws.com/styles/feature_image__wide/games/screenshots/unity_pnelug0kx7.png?itok=bSat5sRx&timestamp=1548611006" alt=""></div> -->
-                </div>
+        <div class="col-5 project-viewer-media">
+          <div class="project-viewer-current-media fadable" style="background-image: url({{currentPhotoURL}})" onclick={{action "enlargeImage"}}>
+            <div class="image-handle previous-image {{unless previousImageAvailable 'd-none'}}">
+              <i class="fa fa-2x fa-angle-left"></i>
+            </div>
+            <div class="image-handle next-image {{unless nextImageAvailable 'd-none'}}">
+              <i class="fa fa-2x fa-angle-right"></i>
             </div>
           </div>
+          {{#each projectsFiltered as |project|}}
+            <div class="owl-carousel owl-theme owl-loaded fadable image-carousel {{unless (equals-to currentProject project) (if initialized 'd-none')}}">
+              <div class="owl-stage-outer">
+                  <div class="owl-stage">
+                    {{#each project.images as |image|}}
+                      <div class="owl-item" onclick={{action "selectImage" image}}><img style="background-image: url({{image}}); width:205px; height:125px;"></div>
+                    {{/each}}
+                  </div>
+              </div>
+            </div>
+          {{/each}}
         </div>
 
-        <div class="col-7 project-viewer-content">
+        <div class="col-7 project-viewer-content fadable">
           <div class="p-4 h-100">
             {{#if currentProject}}
-              {{component (concat "project-descriptions/" currentProject.componentName)}}
+              {{#generic-description project=currentProject}}
+                {{component (concat "project-descriptions/" currentProject.componentName)}}
+              {{/generic-description}}
             {{/if}}
           </div>
         </div>
@@ -33,7 +42,23 @@
     </div>
   </div>
 
-  <div class="project-handle next-project {{unless nextProjectAvailable 'd-none'}}">
-    <i class="fa fa-2x fa-angle-right"></i>
+  <div class="project-handle next-project {{unless nextProjectAvailable 'd-none'}}" onclick={{action "goToNext"}}>
+    <i class="fa fa-2x fa-angle-right"></i><br>
+    <span>Next</span>
+  </div>
+</div>
+
+<div class="project-carousel container mt-2">
+  <div class="owl-carousel-small owl-theme owl-loaded">
+    <div class="owl-stage-outer">
+        <div class="owl-stage">
+          {{#each projectsFiltered as |project|}}
+            <div class="owl-item" onclick={{action (mut currentProject) project}}>
+              <img src="{{if project.thumbnail project.thumbnail (get project.images 0)}}" alt="">
+              <i>{{project.name}}</i>
+            </div>
+          {{/each}}
+        </div>
+    </div>
   </div>
 </div>
